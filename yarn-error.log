@@ -1,0 +1,51 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/Cellar/yarn/1.10.1/libexec/bin/yarn.js add react-native-element@beta
+
+PATH: 
+  $HOME/.npm-global/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Applications/Wireshark.app/Contents/MacOS:/Users/Macpro/.npm-global/bin
+
+Yarn version: 
+  1.10.1
+
+Node version: 
+  8.11.1
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/react-native-element: Not found
+      at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.10.1/libexec/lib/cli.js:61073:18)
+      at Request.self.callback (/usr/local/Cellar/yarn/1.10.1/libexec/lib/cli.js:120166:22)
+      at emitTwo (events.js:126:13)
+      at Request.emit (events.js:214:7)
+      at Request.<anonymous> (/usr/local/Cellar/yarn/1.10.1/libexec/lib/cli.js:121138:10)
+      at emitOne (events.js:116:13)
+      at Request.emit (events.js:211:7)
+      at IncomingMessage.<anonymous> (/usr/local/Cellar/yarn/1.10.1/libexec/lib/cli.js:121060:12)
+      at Object.onceWrapper (events.js:313:30)
+      at emitNone (events.js:111:20)
+
+npm manifest: 
+  {
+    "name": "empty-project-template",
+    "main": "node_modules/expo/AppEntry.js",
+    "private": true,
+    "scripts": {
+      "start": "expo start",
+      "android": "expo start --android",
+      "ios": "expo start --ios",
+      "eject": "expo eject"
+    },
+    "dependencies": {
+      "expo": "^30.0.1",
+      "react": "16.3.1",
+      "react-native": "https://github.com/expo/react-native/archive/sdk-30.0.0.tar.gz"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
