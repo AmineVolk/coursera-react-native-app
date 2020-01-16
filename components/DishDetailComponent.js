@@ -1,28 +1,33 @@
-import React from "react";
+import { Component, default as React } from 'react';
 import { Text, View } from "react-native";
 import { Card } from "react-native-elements";
+import { DISHES } from "../shared/dishes";
 import imgCard from "./images/uthappizza.png";
 
-function RenderDish(props) {
-  const dish = props.dish;
 
-  if (dish != null) {
+class DishDetail extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      dishes: DISHES
+    }
+  }
+  render() {
+    const dishId = 0;
     return (
-      <Card
-        featuredTitle={dish.name}
-        image={imgCard}
-        imageStyle={{ height: 30 }}
-      >
-        <Text style={{ margin: 10 }}>{dish.description}</Text>
-      </Card>
-    );
-  } else {
-    return <View />;
+      <View>
+        <Card
+          featuredTitle={this.state.dishes[dishId].name}
+          image={imgCard}
+          imageStyle={{ height: 30 }}
+        >
+          <Text style={{ margin: 10 }}>{this.state.dishes[dishId].description}</Text>
+        </Card>
+      </View>
+    )
   }
 }
 
-function DishDetail(props) {
-  return <RenderDish dish={props.dish} />;
-}
+
 
 export default DishDetail;
