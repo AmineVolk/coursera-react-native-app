@@ -1,5 +1,5 @@
 import { Component, default as React } from 'react';
-import { ScrollView, Text, View } from "react-native";
+import { ScrollView, Text, View, StatusBar } from "react-native";
 import { Card } from 'react-native-elements';
 import { DISHES } from "../shared/dishes";
 import { LEADERS } from '../shared/leaders';
@@ -29,11 +29,12 @@ export default class Home extends Component {
         }
     }
     static navigationOptions = {
-        title: "Home"
+        title: "Home",
     }
     render() {
         return (
             <ScrollView >
+                <StatusBar backgroundColor="blue" barStyle="light-content" />
                 <RenderItem
                     item={this.state.dishes.filter(dish => dish.featured)} />
                 <RenderItem

@@ -13,7 +13,8 @@ export default class AboutUs extends Component {
         }
     }
     static navigationOptions = {
-        title: "About"
+        title: "About",
+
     }
 
     render() {
