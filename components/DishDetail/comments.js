@@ -1,7 +1,6 @@
 import React from 'react'
-import { Card } from "react-native-elements";
+import { Card, Divider } from "react-native-elements";
 import { Text, View, FlatList } from "react-native";
-
 const Comments = (props) => {
     const comments = props.comments;
 
@@ -12,6 +11,10 @@ const Comments = (props) => {
                 <Text style={{ fontSize: 14 }}>{item.comment}</Text>
                 <Text style={{ fontSize: 12 }}>{item.rating} Stars</Text>
                 <Text style={{ fontSize: 12 }}>{'-- ' + item.author + ', ' + item.date} </Text>
+                <Divider style={{
+                    backgroundColor: '#a1a1a1',
+                    marginVertical: 10
+                }} />
             </View>
         );
     };
