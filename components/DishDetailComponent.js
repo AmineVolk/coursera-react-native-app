@@ -2,7 +2,6 @@ import { Component, default as React } from 'react';
 import { Text, View } from "react-native";
 import { Card } from "react-native-elements";
 import { DISHES } from "../shared/dishes";
-import imgCard from "./images/uthappizza.png";
 
 
 class DishDetail extends Component {
@@ -13,15 +12,15 @@ class DishDetail extends Component {
     }
   }
   render() {
-    const dishId = 0;
+    const dish = this.state.dishes[this.props.navigation.state.params.dishId];
     return (
       <View>
         <Card
-          featuredTitle={this.state.dishes[dishId].name}
-          image={imgCard}
-          imageStyle={{ height: 30 }}
+          featuredTitle={dish.name}
+          image={dish.image}
+        //imageStyle={{ height: 50 }}
         >
-          <Text style={{ margin: 10 }}>{this.state.dishes[dishId].description}</Text>
+          <Text style={{ margin: 10 }}>{dish.description}</Text>
         </Card>
       </View>
     )

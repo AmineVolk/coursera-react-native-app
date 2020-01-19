@@ -10,7 +10,7 @@ const RenderItem = (props) => {
     if (item != null) {
         return (<Card featuredTitle={item.name}
             featuredSubtitle={item.designation}
-            image={require("./images/uthappizza.png")}
+            image={item.image}
         >
             <Text style={{ margin: 10 }}>
                 {item.description}</Text>
@@ -33,7 +33,7 @@ export default class Home extends Component {
     }
     render() {
         return (
-            <ScrollView>
+            <ScrollView >
                 <RenderItem
                     item={this.state.dishes.filter(dish => dish.featured)} />
                 <RenderItem
