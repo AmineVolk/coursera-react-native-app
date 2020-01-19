@@ -18,12 +18,11 @@ export default class Menu extends Component {
     const renderMenuItem = ({ item, index }) => {
       return (
         <ListItem
-          key={index}
           title={item.name}
           subtitle={item.description}
           hideChevron={true}
           onPress={() => navigate("Dishdetail", { dishId: item.id })}
-          leftAvatar={{ source: require("./images/uthappizza.png") }}
+          leftAvatar={{ source: item.image }}
         />
       );
     };
@@ -32,7 +31,7 @@ export default class Menu extends Component {
       <FlatList
         data={this.state.dishes}
         renderItem={renderMenuItem}
-        keyExtractor={item => item.id.toString}
+        keyExtractor={item => item.id.toString()}
       />
     );
   }

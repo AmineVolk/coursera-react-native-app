@@ -5,7 +5,6 @@ import MenuComponent from "./MenuComponent";
 import Contact from "./Contact"
 import AboutUs from "./AboutUs"
 
-
 const MenuNavigator = createStackNavigator({
     Menu: { screen: MenuComponent },
     Dishdetail: { screen: DishDetail },
@@ -21,6 +20,7 @@ const MenuNavigator = createStackNavigator({
         }
     }
 });
+
 const HomeNavigator = createStackNavigator({
     Home: { screen: Home },
 }, {
@@ -34,6 +34,7 @@ const HomeNavigator = createStackNavigator({
         }
     }
 });
+
 const ContactNavigator = createStackNavigator({
     Contact: { screen: Contact },
 }, {
@@ -50,9 +51,9 @@ const ContactNavigator = createStackNavigator({
 });
 
 const AboutUsNavigator = createStackNavigator({
-    AboutUs: { screen: AboutUs },
+    About: { screen: AboutUs },
 }, {
-    initialRouteName: 'AboutUs',
+    initialRouteName: 'About',
     navigationOptions: {
         headerStyle: {
             backgroundColor: '#2a73cc'
@@ -63,6 +64,7 @@ const AboutUsNavigator = createStackNavigator({
         }
     }
 });
+
 const MainNavigator = createDrawerNavigator({
     Home: {
         screen: HomeNavigator,
@@ -85,11 +87,11 @@ const MainNavigator = createDrawerNavigator({
             drawerLabel: "Contact"
         }
     },
-    AboutUs: {
+    About: {
         screen: AboutUsNavigator,
         navigationOptions: {
-            title: "AboutUs",
-            drawerLabel: "AboutUs"
+            title: "About",
+            drawerLabel: "About"
         }
     }
 }, {
