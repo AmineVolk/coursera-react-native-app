@@ -3,14 +3,11 @@ import { Text, View, ScrollView } from "react-native";
 import { Card, Divider } from "react-native-elements";
 import { FlatList } from "react-native";
 import { ListItem } from "react-native-elements";
-import { LEADERS } from "../../shared/leaders"
 import styles from "./Styles"
-export default class AboutUs extends Component {
+class AboutUs extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            leader: LEADERS
-        }
+
     }
     static navigationOptions = {
         title: "About",
@@ -26,7 +23,7 @@ export default class AboutUs extends Component {
                         subtitle={item.description}
                         hideChevron={true}
                         //onPress={() => navigate("Dishdetail", { dishId: item.id })}
-                        leftAvatar={{ source: require("../images/alberto.png") }}
+                        leftAvatar={{ source: { uri: item.image } }}
                     />
                     <Divider style={styles.divider} />
                 </View>
@@ -52,7 +49,7 @@ export default class AboutUs extends Component {
                     <Divider style={styles.divider} />
                     <View>
                         <FlatList
-                            data={this.state.leader}
+                            data={this.props.leaders}
                             renderItem={LeaderItem}
                             keyExtractor={item => item.id.toString()}
                         />
@@ -62,3 +59,4 @@ export default class AboutUs extends Component {
         )
     }
 }
+export default AboutUs;

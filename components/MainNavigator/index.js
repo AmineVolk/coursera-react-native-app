@@ -1,10 +1,10 @@
 import React from "react";
 import { createDrawerNavigator, createStackNavigator, DrawerItems, SafeAreaView } from "react-navigation";
-import DishDetail from "../DishDetail";
-import Home from "../HomeComponent";
-import MenuComponent from "../MenuComponent";
+import DishDetail from "../DishDetail/dishDetailContainer";
+import Home from "../Home/homeContainer";
+import MenuComponent from "../Menu/menuContainer";
 import Contact from "../Contact"
-import AboutUs from "../AboutUs"
+import AboutUs from "../AboutUs/aboutUsContainer"
 import theme from "../../res/theme.style"
 import { Icon } from "react-native-elements"
 import { Image, ScrollView, Text, View } from "react-native"
@@ -31,9 +31,9 @@ const customNavigationOptions = ({ navigation }) => ({
 
 const MenuNavigator = createStackNavigator({
     Menu: {
-        screen: MenuComponent,
+        screen: ({ navigation }) => <MenuComponent navigation={navigation} />,
     },
-    Dishdetail: { screen: DishDetail },
+    Dishdetail: { screen: ({ navigation }) => <DishDetail navigation={navigation} /> },
 }, {
     initialRouteName: 'Menu',
     navigationOptions: customNavigationOptions
@@ -41,7 +41,7 @@ const MenuNavigator = createStackNavigator({
 
 const HomeNavigator = createStackNavigator({
     Home: {
-        screen: Home
+        screen: ({ navigation }) => <Home navigation={navigation} />
     },
 }, {
     navigationOptions: customNavigationOptions
@@ -55,7 +55,7 @@ const ContactNavigator = createStackNavigator({
 });
 
 const AboutUsNavigator = createStackNavigator({
-    About: { screen: AboutUs },
+    About: { screen: ({ navigation }) => <AboutUs navigation={navigation} /> },
 }, {
     initialRouteName: 'About',
     navigationOptions: customNavigationOptions

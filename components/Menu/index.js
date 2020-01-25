@@ -1,20 +1,20 @@
 import { Component, default as React } from "react";
 import { FlatList, View } from "react-native";
 import { ListItem, Divider } from "react-native-elements";
-import { DISHES } from "../shared/dishes";
+import PropTypes from 'prop-types'
 
-export default class Menu extends Component {
+class Menu extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      dishes: DISHES
-    }
+
   }
   static navigationOptions = {
     title: "Menu"
   }
 
   render() {
+    const { navigate } = this.props.navigation;
+
     const renderMenuItem = ({ item, index }) => {
       return (
         <View>
@@ -23,7 +23,7 @@ export default class Menu extends Component {
             subtitle={item.description}
             hideChevron={true}
             onPress={() => navigate("Dishdetail", { dishId: item.id })}
-            leftAvatar={{ source: item.image }}
+            leftAvatar={{ source: { uri: item.image } }}
           />
           <Divider style={{
             backgroundColor: '#a1a1a1',
@@ -32,13 +32,18 @@ export default class Menu extends Component {
 
       );
     };
-    const { navigate } = this.props.navigation;
     return (
       <FlatList
-        data={this.state.dishes}
+        data={this.props.dishes}
         renderItem={renderMenuItem}
         keyExtractor={item => item.id.toString()}
       />
     );
   }
 }
+Menu.propTypes = {
+  dishes: PropTypes.array.isRequired,
+  navigation: PropTypes.object.isRequired
+}
+
+export default Menu;

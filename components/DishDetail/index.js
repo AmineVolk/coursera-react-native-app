@@ -1,14 +1,12 @@
 import { Component, default as React } from 'react';
 import { Text, View, ScrollView } from "react-native";
 import { Card, Icon } from "react-native-elements";
-import { DISHES } from "../../shared/dishes";
-import { COMMENTS } from "../../shared/comments";
-
 import Comments from "./comments"
+import PropTypes from 'prop-types'
 
 const Dish = (props) => <Card
   featuredTitle={props.dish.name}
-  image={props.dish.image}
+  image={{ uri: props.dish.image }}
 >
   <Text style={{ margin: 10 }}>{props.dish.description}</Text>
   <View style={{ flex: 1, flexDirection: "row", justifyContent: "center" }}>
@@ -28,8 +26,6 @@ class DishDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      dishes: DISHES,
-      comments: COMMENTS,
       favorites: []
     }
   }
@@ -43,16 +39,19 @@ class DishDetail extends Component {
 
     return (
       <ScrollView>
-        <Dish dish={this.state.dishes[dishId]}
+        <Dish dish={this.props.dishes[dishId]}
           favorite={this.state.favorites.some(el => el === dishId)}
           onPress={() => this.markeFavorite(dishId)}
         />
-        <Comments comments={this.state.comments.filter((comment) => comment.dishId === dishId)} />
+        <Comments comments={this.props.comments.filter((comment) => comment.dishId === dishId)} />
       </ScrollView>
     )
   }
 }
-
+DishDetail.propTypes = {
+  dishes: PropTypes.array.isRequired,
+  navigation: PropTypes.object.isRequired
+}
 
 
 export default DishDetail;

@@ -1,1 +1,1 @@
-export const baseUrl = 'http://172.16.80.15:3001/'
+export const baseUrl = 'https://my-json-server.typicode.com/AmineVolk/coursear-react-native-db/'
