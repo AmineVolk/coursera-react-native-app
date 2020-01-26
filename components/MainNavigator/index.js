@@ -1,5 +1,5 @@
 import React from "react";
-import { createDrawerNavigator, createStackNavigator, DrawerItems, SafeAreaView } from "react-navigation";
+import { createDrawerNavigator, createStackNavigator } from "react-navigation";
 import DishDetail from "../DishDetail/dishDetailContainer";
 import Home from "../Home/homeContainer";
 import MenuComponent from "../Menu/menuContainer";
@@ -7,9 +7,11 @@ import Contact from "../Contact"
 import AboutUs from "../AboutUs/aboutUsContainer"
 import theme from "../../res/theme.style"
 import { Icon } from "react-native-elements"
-import { Image, ScrollView, Text, View } from "react-native"
-import styles from "./styles"
+
+import CustomDrawer from "./CustomDrawer"
 const customNavigationOptions = ({ navigation }) => ({
+    title: navigation.state.routeName,
+
     headerStyle: {
         backgroundColor: theme.PRIMARY_COLOR,
         height: 30,
@@ -18,8 +20,6 @@ const customNavigationOptions = ({ navigation }) => ({
     headerTintColor: theme.HEADER_TINT_COLOR,
     headerTitleStyle: {
         color: theme.HEADER_TITLE_COLOR,
-        // textAlign: "center",
-        // flex: 1,
     },
     headerLeft: (<Icon
         name="menu"
@@ -60,24 +60,6 @@ const AboutUsNavigator = createStackNavigator({
     initialRouteName: 'About',
     navigationOptions: customNavigationOptions
 });
-
-const customDrawerContentComponent = (props) => (
-    <ScrollView>
-        <SafeAreaView style={styles.container} forceInset={{ top: 'always', horizontal: "never" }} >
-            <View style={styles.drawerHeader}>
-                <View style={{ flex: 1 }}>
-                    <Image source={require("../images/logo.png")}
-                        style={styles.drawerImage}
-                    />
-                </View>
-                <View style={{ flex: 2 }}>
-                    <Text style={styles.drawerHeaderText}>Ristorent Confusion</Text>
-                </View>
-            </View>
-            <DrawerItems {...props} />
-        </SafeAreaView>
-    </ScrollView>
-)
 
 const MainNavigator = createDrawerNavigator({
     Home: {
@@ -140,7 +122,7 @@ const MainNavigator = createDrawerNavigator({
     }
 }, {
     drawerBackgroundColor: "white",
-    contentComponent: customDrawerContentComponent,
+    contentComponent: CustomDrawer,
     contentOptions: {
         activeTintColor: theme.PRIMARY_COLOR,
 

@@ -5,7 +5,9 @@ const mapStateToProps = state => {
         dishes: state.dishes.dishes,
         comments: state.comments.comments,
         promotions: state.promotions.promotions,
-        leaders: state.leaders.leaders
+        leaders: state.leaders.leaders,
+        isLoading: state.leaders.isLoading,
+        erreMess: state.leaders.erreMess
     }
 };
 export default connect(mapStateToProps)(Home);

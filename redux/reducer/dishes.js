@@ -7,7 +7,6 @@ export const dishes = (state = {
 }, action) => {
     switch (action.type) {
         case ActionTypes.ADD_DISHES:
-            console.log(`***** dishes length ${dishes.length}`)
             return { ...state, isLoading: false, errMess: null, dishes: action.payload };
 
         case ActionTypes.DISHES_LOADING:

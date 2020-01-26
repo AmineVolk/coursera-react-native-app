@@ -1,4 +1,5 @@
 import React from 'react';
+import theme from "../res/theme.style"
 import {
     ActivityIndicator,
     StyleSheet,
@@ -13,17 +14,19 @@ const styles = StyleSheet.create({
         flex: 1
     },
     loadingText: {
-        color: '#512DA8',
+        color: theme.PRIMARY_COLOR,
         fontSize: 14,
         fontWeight: 'bold'
     }
 });
 
-export const Loading = () => {
+const Loading = () => {
     return (
         <View style={styles.loadingView} >
-            <ActivityIndicator size="large" color="#512DA8" />
+            <ActivityIndicator size="large" color={theme.PRIMARY_COLOR} />
             <Text style={styles.loadingText} >Loading . . .</Text>
         </View>
     );
 };
+
+export default Loading;

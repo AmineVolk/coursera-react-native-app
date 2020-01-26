@@ -2,7 +2,7 @@ import { Component, default as React } from "react";
 import { FlatList, View } from "react-native";
 import { ListItem, Divider } from "react-native-elements";
 import PropTypes from 'prop-types'
-
+import Loading from "../LoadingComponent"
 class Menu extends Component {
   constructor(props) {
     super(props);
@@ -32,13 +32,25 @@ class Menu extends Component {
 
       );
     };
-    return (
-      <FlatList
-        data={this.props.dishes}
-        renderItem={renderMenuItem}
-        keyExtractor={item => item.id.toString()}
-      />
-    );
+    if (this.props.isLoading) {
+      return (
+        <Loading />
+      );
+    } else if (this.props.errMess) {
+      return (
+        <View>
+          <Text>{props.dishes.errMess}</Text>
+        </View>
+      );
+    } else {
+      return (
+        <FlatList
+          data={this.props.dishes}
+          renderItem={renderMenuItem}
+          keyExtractor={item => item.id.toString()}
+        />
+      );
+    }
   }
 }
 Menu.propTypes = {
