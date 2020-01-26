@@ -7,7 +7,7 @@ import Contact from "../Contact"
 import AboutUs from "../AboutUs/aboutUsContainer"
 import theme from "../../res/theme.style"
 import { Icon } from "react-native-elements"
-
+import Reservation from "../Reservation"
 import CustomDrawer from "./CustomDrawer"
 const customNavigationOptions = ({ navigation }) => ({
     title: navigation.state.routeName,
@@ -60,7 +60,12 @@ const AboutUsNavigator = createStackNavigator({
     initialRouteName: 'About',
     navigationOptions: customNavigationOptions
 });
-
+const ReservationNavigator = createStackNavigator({
+    Reservation: { screen: Reservation }
+}, {
+    initialRouteName: 'Reservation',
+    navigationOptions: customNavigationOptions
+})
 const MainNavigator = createDrawerNavigator({
     Home: {
         screen: HomeNavigator,
@@ -88,6 +93,22 @@ const MainNavigator = createDrawerNavigator({
                     color={tintColor}
                 />
             )
+        }
+    },
+    Reservation:
+    {
+        screen: ReservationNavigator,
+        navigationOptions: {
+            title: 'Reserve Table',
+            drawerLabel: 'Reserve Table',
+            drawerIcon: ({ tintColor, focused }) => (
+                <Icon
+                    name='cutlery'
+                    type='font-awesome'
+                    size={24}
+                    iconStyle={{ color: tintColor }}
+                />
+            ),
         }
     },
     Contact: {
