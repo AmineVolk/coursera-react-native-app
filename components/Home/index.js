@@ -10,6 +10,7 @@ const RenderItem = (props) => {
         return (<Card featuredTitle={item.name}
             featuredSubtitle={item.designation}
             image={{ uri: item.image }}
+
         >
             <Text style={{ margin: 10 }}>
                 {item.description}</Text>
@@ -40,14 +41,19 @@ class Home extends Component {
         }
         else {
             return (
-                <ScrollView >
-                    <RenderItem
-                        item={this.props.dishes.filter(dish => dish.featured)} />
-                    <RenderItem
-                        item={this.props.promotions.filter(promo => promo.featured)} />
-                    <RenderItem
-                        item={this.props.leaders.filter(leader => leader.featured)} />
-                </ScrollView>
+                <View style={{ flex: 1 }}>
+                    <ScrollView >
+                        <View style={{ marginBottom: 15 }}>
+                            <RenderItem
+                                item={this.props.dishes.filter(dish => dish.featured)} />
+                            <RenderItem
+                                item={this.props.promotions.filter(promo => promo.featured)} />
+                            <RenderItem
+                                item={this.props.leaders.filter(leader => leader.featured)} />
+                        </View>
+                    </ScrollView>
+                </View>
+
             )
         }
     }

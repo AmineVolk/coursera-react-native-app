@@ -27,7 +27,7 @@ class AboutUs extends Component {
         </Card>
         const LeaderItem = ({ item, index }) => {
             return (
-                <View>
+                <View >
                     <ListItem
                         title={item.name}
                         subtitle={item.description}
@@ -54,27 +54,29 @@ class AboutUs extends Component {
                 <History />
                 <Card>
                     <Text>{this.props.leaders.errMess}</Text>
-                    
+
                 </Card>
             </ScrollView>
         }
         else {
             return (
-                <ScrollView>
+                <ScrollView style={{ flex: 1 }}>
                     <History />
-                    <Card style={{ marginBottom: 10 }}>
-                        <View>
-                            <Text style={styles.textTitle}>Corporate Leadership</Text>
-                        </View>
-                        <Divider style={styles.divider} />
-                        <View>
+                    <View style={{ marginBottom: 15 }}>
+                        <Card style={{ backgroundColor: "red" }}>
+                            <View>
+                                <Text style={styles.textTitle}>Corporate Leadership</Text>
+                            </View>
+                            <Divider style={styles.divider} />
                             <FlatList
+
                                 data={this.props.leaders}
                                 renderItem={LeaderItem}
                                 keyExtractor={item => item.id.toString()}
                             />
-                        </View>
-                    </Card>
+                        </Card>
+                    </View>
+
                 </ScrollView>
             )
         }

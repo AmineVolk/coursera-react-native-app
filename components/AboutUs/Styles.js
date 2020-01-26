@@ -22,7 +22,7 @@ const Styles = StyleSheet.create({
     },
     divider: {
         backgroundColor: '#a1a1a1',
-        marginBottom: 10
+        marginTop: 10
     }
 });
 

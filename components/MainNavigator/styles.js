@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 import theme from "../../res/theme.style"
 const Styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flex: 1
     },
     drawerHeader: {
         backgroundColor: theme.PRIMARY_COLOR,

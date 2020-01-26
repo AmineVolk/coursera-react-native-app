@@ -25,32 +25,30 @@ const Dish = (props) => <Card
 class DishDetail extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      favorites: []
-    }
-  }
-  markeFavorite(dishId) {
-    this.setState({ favorites: this.state.favorites.concat(dishId) })
   }
 
 
   render() {
     const dishId = this.props.navigation.state.params.dishId;
-
     return (
       <ScrollView>
-        <Dish dish={this.props.dishes[dishId]}
-          favorite={this.state.favorites.some(el => el === dishId)}
-          onPress={() => this.markeFavorite(dishId)}
-        />
-        <Comments comments={this.props.comments.filter((comment) => comment.dishId === dishId)} />
+        <View style={{ marginBottom: 15 }}>
+          <Dish dish={this.props.dishes[dishId]}
+            favorite={this.props.favorites.some(el => el === dishId)}
+            onPress={() => this.props.postFavorite(dishId)}
+          />
+          <Comments comments={this.props.comments.filter((comment) => comment.dishId === dishId)} />
+        </View>
+
       </ScrollView>
     )
   }
 }
 DishDetail.propTypes = {
   dishes: PropTypes.array.isRequired,
-  navigation: PropTypes.object.isRequired
+  navigation: PropTypes.object.isRequired,
+  favorites: PropTypes.array.isRequired,
+  postFavorite: PropTypes.func.isRequired
 }
 
 
