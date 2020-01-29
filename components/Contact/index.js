@@ -10,12 +10,11 @@ export default class Contact extends Component {
     render() {
         return (
             <View>
-                <Card>
-                    <View style={styles.cardTitle}>
+                <View>
+                    <Card style={styles.cardTitle}>
                         <Text style={styles.textTitle}>Contact Information</Text>
-                    </View>
-                    <Divider style={styles.divider} />
-                    <View>
+                    </Card>
+                    <Card>
                         <Text style={styles.text}>
                             121, Clear Water Bay Road
                         </Text >
@@ -34,9 +33,9 @@ export default class Contact extends Component {
                         <Text style={styles.text}>
                             Email:confusion@food.net
                         </Text>
-                    </View>
+                    </Card>
 
-                </Card>
+                </View>
             </View>
         )
     }

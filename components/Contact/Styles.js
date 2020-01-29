@@ -2,7 +2,6 @@ import { StyleSheet } from 'react-native';
 const Styles = StyleSheet.create({
     cardTitle: {
         marginBottom: 10,
-        borderBottomColor: "red",
     },
     textTitle: {
         textAlign: "center",
