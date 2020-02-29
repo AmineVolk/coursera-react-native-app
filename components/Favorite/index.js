@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FlatList, View } from "react-native";
+import { FlatList, View, Alert } from "react-native";
 import { ListItem, Divider } from "react-native-elements";
 import Loading from "../LoadingComponent"
 import Swipeout from 'react-native-swipeout';
@@ -9,7 +9,24 @@ class Favorite extends Component {
     static navigationOptions = {
         title: "My Favorites"
     }
+    onPressOnDelete = (item) => {
+        Alert.alert("Delete Favorite ?",
+            `Are you sure you wish to delete the favorite ${item.name}`,
+            [
+                {
+                    text: "Cancel",
+                    onPress: () => console.log(item.name + "not deleted"),
+                    style: "cancel"
+                },
+                {
+                    text: "OK",
+                    onPress: () => this.props.deleteFavoriteDispatch(item.id)
+                }
+            ],
+            { cancelable: false }
+        )
 
+    }
     render() {
         const { navigate } = this.props.navigation;
         const renderMenuItem = ({ item, index }) => {
@@ -18,7 +35,7 @@ class Favorite extends Component {
                     {
                         text: 'Delete',
                         type: "delete",
-                        onPress: () => this.props.deleteFavoriteDispatch(item.id)
+                        onPress: () => this.onPressOnDelete(item)
                     }
                 ]}>
                     <View>
