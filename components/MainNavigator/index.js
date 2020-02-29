@@ -9,6 +9,11 @@ import theme from "../../res/theme.style"
 import { Icon } from "react-native-elements"
 import Reservation from "../Reservation"
 import CustomDrawer from "./CustomDrawer"
+import Favorites from "../Favorite/favoriteContainer"
+
+
+
+
 const customNavigationOptions = ({ navigation }) => ({
     title: navigation.state.routeName,
 
@@ -27,6 +32,13 @@ const customNavigationOptions = ({ navigation }) => ({
         color="white"
         onPress={() => navigation.toggleDrawer()}
     />)
+})
+
+const FavoritesNavigator = createStackNavigator({
+    Favorites: { screen: ({ navigation }) => <Favorites navigation={navigation} />, }
+}, {
+    initialRouteName: 'Favorites',
+    navigationOptions: customNavigationOptions
 })
 
 const MenuNavigator = createStackNavigator({
@@ -66,6 +78,7 @@ const ReservationNavigator = createStackNavigator({
     initialRouteName: 'Reservation',
     navigationOptions: customNavigationOptions
 })
+
 const MainNavigator = createDrawerNavigator({
     Home: {
         screen: HomeNavigator,
@@ -74,7 +87,7 @@ const MainNavigator = createDrawerNavigator({
             drawerLabel: "Home",
             drawerIcon: ({ tintColor }) => (
                 <Icon name="home"
-                    type="font-awsome"
+                    type="font-awesome"
                     size={24}
                     color={tintColor}
                 />
@@ -88,7 +101,22 @@ const MainNavigator = createDrawerNavigator({
             drawerLabel: "Menu",
             drawerIcon: ({ tintColor }) => (
                 <Icon name="list"
-                    type="font-awsome"
+                    type="font-awesome"
+                    size={24}
+                    color={tintColor}
+                />
+            )
+        }
+    },
+    Favorites: {
+        screen: FavoritesNavigator,
+        navigationOptions: {
+            title: "Favorites",
+            drawerLabel: "Favorites",
+            drawerIcon: ({ tintColor }) => (
+                <Icon
+                    name="heart"
+                    type="font-awesome"
                     size={24}
                     color={tintColor}
                 />
@@ -119,7 +147,7 @@ const MainNavigator = createDrawerNavigator({
             drawerIcon: ({ tintColor }) => (
                 <Icon
                     name="contacts"
-                    type="font-awsome"
+                    type='font-awsome'
                     size={22}
                     color={tintColor}
                 />
@@ -134,7 +162,7 @@ const MainNavigator = createDrawerNavigator({
             drawerIcon: ({ tintColor }) => (
                 <Icon
                     name="info"
-                    type="font-awsome"
+                    type="font-awesome"
                     size={24}
                     color={tintColor}
                 />

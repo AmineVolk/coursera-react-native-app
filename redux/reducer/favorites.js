@@ -1,4 +1,4 @@
-import { ADD_FAVORITE } from '../ActionTypes';
+import { ADD_FAVORITE, DELETE_FAVORITE } from '../ActionTypes';
 
 export const favorites = (state = [], action) => {
     switch (action.type) {
@@ -7,7 +7,9 @@ export const favorites = (state = [], action) => {
                 return state;
             else
                 return state.concat(action.payload);
-
+        case DELETE_FAVORITE:
+            const newState = state.filter(favorite => favorite != action.payload);
+            return { ...state, newState }
         default:
             return state;
     }
