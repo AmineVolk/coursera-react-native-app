@@ -1,5 +1,5 @@
 import { Component, default as React } from 'react';
-import { ScrollView, Text, View, StatusBar } from "react-native";
+import { ScrollView, Text, View, StatusBar, Animated, Easing } from "react-native";
 import { Card } from 'react-native-elements';
 import PropTypes from 'prop-types'
 import Loading from "../LoadingComponent"
@@ -26,7 +26,10 @@ class Home extends Component {
     static navigationOptions = {
         title: 'Home',
     };
+
+
     render() {
+
         if (this.props.isLoading) {
             return (<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                 <Loading />
@@ -41,18 +44,17 @@ class Home extends Component {
         }
         else {
             return (
-                <View style={{ flex: 1 }}>
-                    <ScrollView >
-                        <View style={{ marginBottom: 15 }}>
-                            <RenderItem
-                                item={this.props.dishes.filter(dish => dish.featured)} />
-                            <RenderItem
-                                item={this.props.promotions.filter(promo => promo.featured)} />
-                            <RenderItem
-                                item={this.props.leaders.filter(leader => leader.featured)} />
-                        </View>
-                    </ScrollView>
-                </View>
+
+                <ScrollView >
+                    <View style={{ marginBottom: 15 }}>
+                        <RenderItem
+                            item={this.props.dishes.filter(dish => dish.featured)} />
+                        <RenderItem
+                            item={this.props.promotions.filter(promo => promo.featured)} />
+                        <RenderItem
+                            item={this.props.leaders.filter(leader => leader.featured)} />
+                    </View>
+                </ScrollView>
 
             )
         }

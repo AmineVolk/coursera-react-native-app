@@ -3,6 +3,8 @@ import { FlatList, View } from "react-native";
 import { ListItem, Divider } from "react-native-elements";
 import PropTypes from 'prop-types'
 import Loading from "../LoadingComponent"
+import * as Animatable from "react-native-animatable"
+
 class Menu extends Component {
   constructor(props) {
     super(props);
@@ -17,19 +19,20 @@ class Menu extends Component {
 
     const renderMenuItem = ({ item, index }) => {
       return (
-        <View>
-          <ListItem
-            title={item.name}
-            subtitle={item.description}
-            hideChevron={true}
-            onPress={() => navigate("Dishdetail", { dishId: item.id })}
-            leftAvatar={{ source: { uri: item.image } }}
-          />
-          <Divider style={{
-            backgroundColor: '#a1a1a1',
-          }} />
-        </View>
-
+        <Animatable.View animation="fadeInRightBig" duration={1500}>
+          <View>
+            <ListItem
+              title={item.name}
+              subtitle={item.description}
+              hideChevron={true}
+              onPress={() => navigate("Dishdetail", { dishId: item.id })}
+              leftAvatar={{ source: { uri: item.image } }}
+            />
+            <Divider style={{
+              backgroundColor: '#a1a1a1',
+            }} />
+          </View>
+        </Animatable.View>
       );
     };
     if (this.props.isLoading) {

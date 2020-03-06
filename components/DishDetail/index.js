@@ -55,7 +55,7 @@ class DishDetail extends Component {
           showModal={this.state.showModal} />
 
         <View style={{ marginBottom: 15 }}>
-          <Animatable.View animation="fadeInDown" duration={1500} delay={900}>
+          <Animatable.View animation="fadeInDown" duration={1500} delay={500}>
 
             <Dish dish={this.props.dishes[dishId]}
               favorite={this.props.favorites.some(el => el === dishId)}
@@ -64,7 +64,7 @@ class DishDetail extends Component {
             />
           </Animatable.View>
 
-          <Animatable.View animation="fadeInUp" duration={1500} delay={900}>
+          <Animatable.View animation="fadeInUp" duration={1500} delay={500}>
             <Comments comments={this.props.comments.filter((comment) => comment.dishId === dishId)} />
           </Animatable.View>
         </View>

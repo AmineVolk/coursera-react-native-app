@@ -6,6 +6,7 @@ import { ListItem } from "react-native-elements";
 import styles from "./Styles"
 import PropTypes from 'prop-types'
 import Loading from "../LoadingComponent"
+import * as Animatable from "react-native-animatable"
 class AboutUs extends Component {
     constructor(props) {
         super(props);
@@ -50,31 +51,35 @@ class AboutUs extends Component {
             );
         } else if (this.props.errMess) {
             <ScrollView>
-                <History />
-                <View>
-                    <Text>{this.props.leaders.errMess}</Text>
-                </View>
+                <Animatable.View animation="fadeInDown" duration="1500" delay="900">
+                    <History />
+                    <View>
+                        <Text>{this.props.leaders.errMess}</Text>
+                    </View>
+                </Animatable.View>
             </ScrollView>
         }
         else {
             return (
                 <ScrollView style={{ flex: 1 }}>
-                    <History />
-                    <View style={{ marginBottom: 15 }}>
-                        <View >
-                            <Card>
-                                <Text style={styles.textTitle}>Corporate Leadership</Text>
-                            </Card>
-                            <Card>
-                                <FlatList
+                    <Animatable.View animation="fadeInDown" duration={1500} delay={300}>
+                        <History />
+                        <View style={{ marginBottom: 15 }}>
+                            <View >
+                                <Card>
+                                    <Text style={styles.textTitle}>Corporate Leadership</Text>
+                                </Card>
+                                <Card>
+                                    <FlatList
 
-                                    data={this.props.leaders}
-                                    renderItem={LeaderItem}
-                                    keyExtractor={item => item.id.toString()}
-                                />
-                            </Card>
+                                        data={this.props.leaders}
+                                        renderItem={LeaderItem}
+                                        keyExtractor={item => item.id.toString()}
+                                    />
+                                </Card>
+                            </View>
                         </View>
-                    </View>
+                    </Animatable.View>
                 </ScrollView>
             )
         }

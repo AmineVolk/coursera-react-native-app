@@ -4,6 +4,7 @@ import { ListItem, Divider } from "react-native-elements";
 import Loading from "../LoadingComponent"
 import Swipeout from 'react-native-swipeout';
 import PropTypes from 'prop-types'
+import * as Animatable from "react-native-animatable"
 
 class Favorite extends Component {
     static navigationOptions = {
@@ -38,16 +39,19 @@ class Favorite extends Component {
                         onPress: () => this.onPressOnDelete(item)
                     }
                 ]}>
-                    <View>
-                        <ListItem key={index} title={item.name}
-                            subtitle={item.description} hideChevron={true}
-                            onPress={() => navigate("Dishdetail", { dishId: item.id })}
-                            leftAvatar={{ source: { uri: item.image } }}
-                        />
-                        <Divider style={{
-                            backgroundColor: '#a1a1a1',
-                        }} />
-                    </View>
+                    <Animatable.View animation="fadeInRightBig" duration={1500}>
+
+                        <View>
+                            <ListItem key={index} title={item.name}
+                                subtitle={item.description} hideChevron={true}
+                                onPress={() => navigate("Dishdetail", { dishId: item.id })}
+                                leftAvatar={{ source: { uri: item.image } }}
+                            />
+                            <Divider style={{
+                                backgroundColor: '#a1a1a1',
+                            }} />
+                        </View>
+                    </Animatable.View>
                 </Swipeout>
 
             )
