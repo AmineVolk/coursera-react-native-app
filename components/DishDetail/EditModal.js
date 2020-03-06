@@ -23,7 +23,6 @@ const EditModal = ({ postComment, toggleModal, showModal, dishId }) => {
             dishId: dishId,
             rating: rating
         }
-        console.log(`*** on click submit comment : ${JSON.stringify(commentToCreate)}`)
         postComment(commentToCreate);
         toggleModal();
     }

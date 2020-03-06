@@ -5,6 +5,7 @@ import Comments from "./comments"
 import PropTypes from 'prop-types'
 import themes from "../../res/theme.style"
 import EditModal from "./EditModal"
+import * as Animatable from "react-native-animatable"
 
 const Dish = (props) => <Card
   featuredTitle={props.dish.name}
@@ -52,15 +53,21 @@ class DishDetail extends Component {
           postComment={this.props.postComment}
           toggleModal={this.toggleModal}
           showModal={this.state.showModal} />
-        <View style={{ marginBottom: 15 }}>
-          <Dish dish={this.props.dishes[dishId]}
-            favorite={this.props.favorites.some(el => el === dishId)}
-            onPressFavorite={() => this.props.postFavorite(dishId)}
-            onPressEdit={this.toggleModal}
-          />
-          <Comments comments={this.props.comments.filter((comment) => comment.dishId === dishId)} />
-        </View>
 
+        <View style={{ marginBottom: 15 }}>
+          <Animatable.View animation="fadeInDown" duration={1500} delay={900}>
+
+            <Dish dish={this.props.dishes[dishId]}
+              favorite={this.props.favorites.some(el => el === dishId)}
+              onPressFavorite={() => this.props.postFavorite(dishId)}
+              onPressEdit={this.toggleModal}
+            />
+          </Animatable.View>
+
+          <Animatable.View animation="fadeInUp" duration={1500} delay={900}>
+            <Comments comments={this.props.comments.filter((comment) => comment.dishId === dishId)} />
+          </Animatable.View>
+        </View>
       </ScrollView>
     )
   }
