@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Text, View, ScrollView, Picker, Switch, Button, Modal } from 'react-native';
+import { Text, View, Picker, Switch, Button, Alert } from 'react-native';
 import DatePicker from 'react-native-datepicker'
 import styles from "./styles"
 import themes from "../../res/theme.style"
 import { Divider, Card } from "react-native-elements";
-import ReservationModal from "./ModalReservation"
+import * as Animatable from "react-native-animatable"
+
 class Reservation extends Component {
 
     constructor(props) {
@@ -35,18 +36,36 @@ class Reservation extends Component {
             showModal: false
         });
     }
+    onPressOnSubmit = () => {
+        Alert.alert("Your Reservation OK ?",
+            `Number of Guests : ${this.state.guests}\n\Smoking ? ${this.state.smoking}\n\Date and time : ${this.state.date}`,
+            [
+                {
+                    text: "Cancel",
+                    onPress: () => console.log("Reservation cancel"),
+                    style: "cancel"
+                },
+                {
+                    text: "OK",
+                    onPress: () => this.handleReservation()
+                }
+            ],
+            { cancelable: false }
+        )
 
+    }
 
     render() {
 
         return (
 
-            <ScrollView>
-                <View>
+            <View style={styles.root}>
+                <Animatable.View animation="zoomIn" >
+
                     <Card >
                         <Text style={styles.titleText}>Reserve your table</Text>
                     </Card>
-                    <Card>
+                    <Card containerStyle={{ display: "flex", flexDirection: "column", flexGrow: 0 }}>
                         <View style={styles.formRow}>
                             <Text style={styles.formLabel}>Number of Guests</Text>
                             <Picker
@@ -80,47 +99,50 @@ class Reservation extends Component {
                             marginTop: 10
 
                         }} />
-                        <View style={styles.datePickerView}>
+                        <View style={{ flex: 1, paddingVertical: 15 }}>
                             <Text style={styles.formLabel}>Date and Time : </Text>
-                            <DatePicker
-                                style={{ flex: 1, width: "100%", marginVertical: 10, }}
-                                date={this.state.date}
-                                format=''
-                                mode="datetime"
-                                placeholder="select date and Time"
-                                minDate="2017-01-01"
-                                confirmBtnText="Confirm"
-                                cancelBtnText="Cancel"
-                                customStyles={{
-                                    dateIcon: {
-                                        position: 'absolute',
-                                        left: 0,
-                                        top: 4,
-                                        marginLeft: 0
-                                    },
-                                    dateInput: {
-                                        marginLeft: 36,
-                                        flex: 1
-                                    }
-                                }}
-                                onDateChange={(date) => { this.setState({ date: date }) }}
-                            />
                         </View>
+
+                        <DatePicker
+                            style={{ width: "100%", marginVertical: 20 }}
+                            date={this.state.date}
+                            format=''
+                            mode="datetime"
+                            placeholder="select date and Time"
+                            minDate="2017-01-01"
+                            confirmBtnText="Confirm"
+                            cancelBtnText="Cancel"
+                            customStyles={{
+                                dateIcon: {
+                                    position: 'absolute',
+                                    left: 0,
+                                    top: 4,
+                                    marginLeft: 0
+                                },
+                                dateInput: {
+                                    marginLeft: 36,
+                                    flex: 1
+                                }
+                            }}
+                            onDateChange={(date) => { this.setState({ date: date }) }}
+                        />
                         <Divider style={{
                             backgroundColor: '#a1a1a1',
                         }} />
-                        <View style={styles.buttonView}>
-                            <Button
-                                style={{ flex: 1 }}
-                                onPress={() => this.handleReservation()}
-                                title="Reserve"
-                                color={themes.PRIMARY_COLOR}
-                                accessibilityLabel="Learn more about this purple button"
-                            />
-                        </View>
+
+                        <Button
+                            style={{ flex: 1 }}
+                            onPress={() => this.onPressOnSubmit()}
+                            title="Reserve"
+                            color={themes.PRIMARY_COLOR}
+                            accessibilityLabel="Learn more about this purple button"
+                        />
+
                     </Card>
-                </View>
-            </ScrollView>
+                </Animatable.View>
+
+            </View>
+
         );
     }
 

@@ -2,20 +2,22 @@ import { StyleSheet } from 'react-native';
 import themes from "../../res/theme.style"
 
 const Styles = StyleSheet.create({
+    root: {
+        display: "flex",
+        flex: 1,
+        flexDirection: "column",
+        height: "100%",
+    },
     formRow: {
         alignItems: 'center',
         justifyContent: 'center',
         flex: 1,
         flexDirection: 'row',
+        paddingVertical: 20
     },
     formLabel: {
         fontSize: 18,
-        flex: 2
-    },
-    datePickerView: {
-        flex: 1,
-        flexDirection: "column",
-        marginVertical: 10
+
     },
     formItem: {
         flex: 1
@@ -32,10 +34,7 @@ const Styles = StyleSheet.create({
         fontSize: 20,
         color: "#43484d"
     },
-    buttonView: {
-        flex: 1,
-        marginTop: 15
-    },
+
     // model style
 
     modal: {

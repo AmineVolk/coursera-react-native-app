@@ -7,14 +7,18 @@ import themes from "../../res/theme.style"
 import EditModal from "./EditModal"
 import * as Animatable from "react-native-animatable"
 
-
-const recognizeDrag = ({ moveX, moveY, dx, dy }) => {
+const recognizeDragRightToLeft = ({ moveX, moveY, dx, dy }) => {
   if (dx < -200) {
     return true;
   }
   return false;
 }
-
+const recognizeDragLeftToRigth = ({ moveX, moveY, dx, dy }) => {
+  if (dx > 250) {
+    return true;
+  }
+  return false;
+}
 const Dish = (props) => {
   const handleViewRef = (ref) => this.myRef = ref;
   const panResonder = PanResponder.create({
@@ -25,7 +29,7 @@ const Dish = (props) => {
       this.myRef.rubberBand(1000).then(endState => console.log(endState.finished ? "finished" : "cancelled"))
     },
     onPanResponderEnd: (e, gestureState) => {
-      if (recognizeDrag(gestureState)) {
+      if (recognizeDragRightToLeft(gestureState)) {
         Alert.alert('Add Favorite', 'Are you sure you wish to add to favorite ?',
           [{ text: 'Cancel', onPress: () => console.log("cancel add favorite"), style: "cancel" },
           {
@@ -37,6 +41,13 @@ const Dish = (props) => {
           { cancelable: false }
         )
         return true;
+      }
+      else if (recognizeDragLeftToRigth(gestureState)) {
+        setTimeout(() => {
+          props.onPressEdit();
+          return true;
+        }, 500)
+
       }
     }
   })
