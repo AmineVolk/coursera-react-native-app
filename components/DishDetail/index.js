@@ -1,5 +1,5 @@
 import { Component, default as React } from 'react';
-import { Text, View, ScrollView, Alert, PanResponder } from "react-native";
+import { Text, View, ScrollView, Alert, PanResponder, Share } from "react-native";
 import { Card, Icon } from "react-native-elements";
 import Comments from "./comments"
 import PropTypes from 'prop-types'
@@ -19,6 +19,16 @@ const recognizeDragLeftToRigth = ({ moveX, moveY, dx, dy }) => {
   }
   return false;
 }
+const shareDish = (title, message) => {
+  Share.share({
+    title: title,
+    message: `${title} + : ${message}`
+  }, {
+    dialogTitle: `Share ${title}`
+  })
+
+}
+
 const Dish = (props) => {
   const handleViewRef = (ref) => this.myRef = ref;
   const panResonder = PanResponder.create({
@@ -60,6 +70,13 @@ const Dish = (props) => {
     >
       <Text style={{ margin: 10 }}>{props.dish.description}</Text>
       <View style={{ flex: 1, flexDirection: "row", justifyContent: "center" }}>
+        <Icon
+          raised
+          reverse
+          name={"share"}
+          type="font-awesome"
+          color="#4a89dc"
+          onPress={() => shareDish(props.dish.name, props.dish.description)} />
         <Icon
           raised
           reverse
