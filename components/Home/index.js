@@ -3,11 +3,13 @@ import { ScrollView, Text, View, StatusBar, Animated, Easing } from "react-nativ
 import { Card } from 'react-native-elements';
 import PropTypes from 'prop-types'
 import Loading from "../LoadingComponent"
-
+import theme from "../../res/theme.style"
 const RenderItem = (props) => {
     const item = props.item[0];
     if (item != null) {
-        return (<Card featuredTitle={item.name}
+        return (<Card
+            containerStyle={theme.card}
+            featuredTitle={item.name}
             featuredSubtitle={item.designation}
             image={{ uri: item.image }}
 

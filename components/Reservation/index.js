@@ -7,6 +7,8 @@ import { Divider, Card } from "react-native-elements";
 import * as Animatable from "react-native-animatable"
 import * as Permissions from 'expo-permissions';
 import { Notifications } from 'expo';
+import theme from "../../res/theme.style"
+
 class Reservation extends Component {
 
     constructor(props) {
@@ -92,7 +94,7 @@ class Reservation extends Component {
         return (
             <View style={styles.root}>
                 <Animatable.View animation="zoomIn" >
-                    <Card >
+                    <Card containerStyle={theme.card}>
                         <Text style={styles.titleText}>Reserve your table</Text>
                     </Card>
                     <Card containerStyle={{ display: "flex", flexDirection: "column", flexGrow: 0 }}>

@@ -10,9 +10,7 @@ import { Icon } from "react-native-elements"
 import Reservation from "../Reservation"
 import CustomDrawer from "./CustomDrawer"
 import Favorites from "../Favorite/favoriteContainer"
-
-
-
+import Login from "../Login/index"
 
 const customNavigationOptions = ({ navigation }) => ({
     title: navigation.state.routeName,
@@ -32,6 +30,12 @@ const customNavigationOptions = ({ navigation }) => ({
         color="white"
         onPress={() => navigation.toggleDrawer()}
     />)
+})
+const LoginNavigator = createStackNavigator({
+    Login: { screen: ({ navigation }) => <Login navigation={navigation} />, }
+}, {
+    initialRouteName: 'Login',
+    navigationOptions: customNavigationOptions
 })
 
 const FavoritesNavigator = createStackNavigator({
@@ -163,6 +167,21 @@ const MainNavigator = createDrawerNavigator({
                 <Icon
                     name="info"
                     type="font-awesome"
+                    size={24}
+                    color={tintColor}
+                />
+            )
+        }
+    },
+    Login: {
+        screen: LoginNavigator,
+        navigationOptions: {
+            title: "Login",
+            drawerLabel: "Login",
+            drawerIcon: ({ tintColor }) => (
+                <Icon
+                    name="account-circle"
+                    type="material"
                     size={24}
                     color={tintColor}
                 />
