@@ -5,18 +5,17 @@ import styles from "./styles"
 import themes from "../../res/theme.style"
 import { Divider, Card } from "react-native-elements";
 import * as Animatable from "react-native-animatable"
-
+import * as Permissions from 'expo-permissions';
+import { Notifications } from 'expo';
 class Reservation extends Component {
 
     constructor(props) {
         super(props);
-
         this.state = {
             guests: 1,
             smoking: false,
             date: '',
             showModal: false
-
         }
     }
     toggleModal() {
@@ -26,6 +25,7 @@ class Reservation extends Component {
     handleReservation() {
         console.log(JSON.stringify(this.state));
         this.toggleModal();
+        this.presentLocalNotif(this.state.date)
     }
 
     resetForm() {
@@ -36,6 +36,40 @@ class Reservation extends Component {
             showModal: false
         });
     }
+
+    async obtainNotifPermission() {
+        let permission = await Permissions.getAsync(Permissions.USER_FACING_NOTIFICATIONS);
+        if (permission.status !== "granted") {
+            permission = await Permissions.getAsync(Permissions.USER_FACING_NOTIFICATIONS);
+            if (permission.status !== "granted") {
+                Alert.alert("Permission not granted to show notifications");
+            }
+        }
+        return permission;
+
+    }
+
+    async presentLocalNotif(date) {
+        try {
+            await this.obtainNotifPermission();
+            Notifications.presentLocalNotificationAsync({
+                title: "Your Reservation",
+                body: `Reservation for ${date} requested`,
+                ios: {
+                    sound: true
+                },
+                android: {
+                    sound: true,
+                    vibrate: true,
+                    color: "#512DA8"
+                }
+            })
+        } catch (e) {
+            console.error(`Error in presentLocalNotif ${e}`)
+        }
+
+    }
+
     onPressOnSubmit = () => {
         Alert.alert("Your Reservation OK ?",
             `Number of Guests : ${this.state.guests}\n\Smoking ? ${this.state.smoking}\n\Date and time : ${this.state.date}`,
@@ -52,16 +86,12 @@ class Reservation extends Component {
             ],
             { cancelable: false }
         )
-
     }
 
     render() {
-
         return (
-
             <View style={styles.root}>
                 <Animatable.View animation="zoomIn" >
-
                     <Card >
                         <Text style={styles.titleText}>Reserve your table</Text>
                     </Card>
@@ -137,14 +167,10 @@ class Reservation extends Component {
                             color={themes.PRIMARY_COLOR}
                             accessibilityLabel="Learn more about this purple button"
                         />
-
                     </Card>
                 </Animatable.View>
-
             </View>
-
         );
     }
-
 };
 export default Reservation;
