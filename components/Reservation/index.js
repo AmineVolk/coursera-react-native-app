@@ -97,7 +97,7 @@ class Reservation extends Component {
                     <Card containerStyle={theme.card}>
                         <Text style={styles.titleText}>Reserve your table</Text>
                     </Card>
-                    <Card containerStyle={{ display: "flex", flexDirection: "column", flexGrow: 0 }}>
+                    <Card containerStyle={styles.bodyCard}>
                         <View style={styles.formRow}>
                             <Text style={styles.formLabel}>Number of Guests</Text>
                             <Picker
@@ -120,9 +120,12 @@ class Reservation extends Component {
                         <View style={styles.formRow}>
                             <Text style={styles.formLabel}>Smoking ?</Text>
                             <Switch
+                                trackColor={{
+                                    true: theme.PRIMARY_COLOR
+                                }}
+                                thumbColor={this.state.smoking ? theme.PRIMARY_COLOR : "grey"}
                                 style={styles.formItem}
                                 value={this.state.smoking}
-                                trackColor={themes.PRIMARY_COLOR}
                                 onValueChange={(value) => this.setState({ smoking: value })}>
                             </Switch>
                         </View>
@@ -166,7 +169,7 @@ class Reservation extends Component {
                             style={{ flex: 1 }}
                             onPress={() => this.onPressOnSubmit()}
                             title="Reserve"
-                            color={themes.PRIMARY_COLOR}
+                            color={themes.PRIMARY_COLOR_LIGTH}
                             accessibilityLabel="Learn more about this purple button"
                         />
                     </Card>

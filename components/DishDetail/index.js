@@ -3,10 +3,9 @@ import { Text, View, ScrollView, Alert, PanResponder, Share } from "react-native
 import { Card, Icon } from "react-native-elements";
 import Comments from "./comments"
 import PropTypes from 'prop-types'
-import themes from "../../res/theme.style"
 import EditModal from "./EditModal"
 import * as Animatable from "react-native-animatable"
-
+import theme from "../../res/theme.style"
 const recognizeDragRightToLeft = ({ moveX, moveY, dx, dy }) => {
   if (dx < -200) {
     return true;
@@ -67,6 +66,7 @@ const Dish = (props) => {
     <Card
       featuredTitle={props.dish.name}
       image={{ uri: props.dish.image }}
+      containerStyle={theme.card}
     >
       <Text style={{ margin: 10 }}>{props.dish.description}</Text>
       <View style={{ flex: 1, flexDirection: "row", justifyContent: "center" }}>
@@ -82,14 +82,14 @@ const Dish = (props) => {
           reverse
           name={props.favorite ? "heart" : "heart-o"}
           type="font-awesome"
-          color={themes.PRIMARY_COLOR}
+          color={theme.PRIMARY_COLOR}
           onPress={() => props.favorite ? console.log("already favorite") : props.onPressFavorite()} />
         <Icon
           raised
           reverse
           name={"pencil"}
           type="font-awesome"
-          color="#4a89dc"
+          color={theme.SECONDARY_COLOR}
           onPress={() => props.onPressEdit()} />
       </View>
     </Card>

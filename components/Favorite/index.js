@@ -42,7 +42,10 @@ class Favorite extends Component {
                     <Animatable.View animation="fadeInRightBig" duration={1500}>
 
                         <View>
-                            <ListItem key={index} title={item.name}
+                            <ListItem
+
+                                key={index}
+                                title={item.name}
                                 subtitle={item.description} hideChevron={true}
                                 onPress={() => navigate("Dishdetail", { dishId: item.id })}
                                 leftAvatar={{ source: { uri: item.image } }}

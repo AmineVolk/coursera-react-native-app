@@ -1,7 +1,11 @@
 export default {
-    PRIMARY_COLOR: '#feaa26',
-    PRIMARY_COLOR_DARK: '#c67b00',
-    PRIMARY_COLOR_LIGTH: "#ffdc5c",
+    PRIMARY_COLOR: '#ffac00',
+    PRIMARY_COLOR_DARK: '#f3991e',
+    PRIMARY_COLOR_LIGTH: "#fdbb2e",
+    PRIMARY_TEXT: "#757575",
+    SECONDARY_COLOR: "#808080",
+    SECONDARY_TEXT: "#757575",
+    DIVIDER_COLOR: "#BDBDBD",
     HEADER_TINT_COLOR: "#fff",
     HEADER_TITLE_COLOR: "#fff",
     card: {

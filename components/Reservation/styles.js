@@ -34,6 +34,16 @@ const Styles = StyleSheet.create({
         fontSize: 20,
         color: "#43484d"
     },
+    bodyCard: {
+        display: "flex", flexDirection: "column", flexGrow: 0, shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5
+    },
 
     // model style
 

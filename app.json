@@ -1,5 +1,8 @@
 {
   "expo": {
+    "androidStatusBar": {
+      "backgroundColor": "#ffac00"
+    },
     "name": "confusion",
     "slug": "confusion",
     "privacy": "public",

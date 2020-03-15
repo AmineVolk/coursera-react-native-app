@@ -1,6 +1,8 @@
 import React from 'react'
 import { Card, Divider, Rating } from "react-native-elements";
 import { Text, View, FlatList } from "react-native";
+import theme from "../../res/theme.style"
+
 const Comments = (props) => {
     const comments = props.comments;
 
@@ -29,7 +31,7 @@ const Comments = (props) => {
     };
 
     return (
-        <Card title='Comments' >
+        <Card title='Comments' containerStyle={theme.card} >
             <FlatList
                 data={comments}
                 renderItem={renderCommentItem}

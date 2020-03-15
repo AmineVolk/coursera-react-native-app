@@ -19,7 +19,8 @@ const Styles = StyleSheet.create({
         textAlign: "center",
         fontWeight: 'bold',
         fontSize: 20,
-        marginBottom: 20
+        marginBottom: 20,
+        color: themes.PRIMARY_TEXT
     },
     card: themes.card
 });

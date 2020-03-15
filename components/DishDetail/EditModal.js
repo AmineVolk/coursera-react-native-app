@@ -2,7 +2,7 @@ import React, { Component, useState } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { View, Modal, Text, Button } from "react-native";
 import { Input, Rating, Card } from "react-native-elements";
-import themeStyle from '../../res/theme.style';
+import theme from '../../res/theme.style';
 import PropTypes from 'prop-types'
 
 const EditModal = ({ postComment, toggleModal, showModal, dishId }) => {
@@ -32,8 +32,7 @@ const EditModal = ({ postComment, toggleModal, showModal, dishId }) => {
         onRequestClose={() => toggleModal()}
         style={{ backgroundColor: "red" }}
     >
-        <Card
-        >
+        <Card containerStyle={theme.card}>
             <Text style={{ textAlign: "center", color: "#f1c40f" }}>Rating <Text style={{ fontSize: 20 }}>{rating}</Text>/5</Text>
             <Rating onFinishRating={(rate) => setRating(rate)}
                 startingValue={rating}
@@ -48,7 +47,7 @@ const EditModal = ({ postComment, toggleModal, showModal, dishId }) => {
                         style={{ marginRight: 8 }}
                         name='user'
                         size={24}
-                        color='#808080'
+                        color={theme.SECONDARY_COLOR}
                     />
                 }
             />
@@ -62,7 +61,7 @@ const EditModal = ({ postComment, toggleModal, showModal, dishId }) => {
 
                         name='comments'
                         size={24}
-                        color='#808080'
+                        color={theme.SECONDARY_COLOR}
                     />
                 }
             />
@@ -71,7 +70,7 @@ const EditModal = ({ postComment, toggleModal, showModal, dishId }) => {
                 <Button
                     onPress={() => handleSubmit()}
                     title="Submit"
-                    color={themeStyle.PRIMARY_COLOR}
+                    color={theme.PRIMARY_COLOR}
                     icon={
                         <Icon
                             name="check"
@@ -82,7 +81,7 @@ const EditModal = ({ postComment, toggleModal, showModal, dishId }) => {
             </View>
             <Button
                 onPress={() => toggleModal()}
-                color="#808080"
+                color={theme.SECONDARY_COLOR}
                 title="Cancel"
             />
         </Card>

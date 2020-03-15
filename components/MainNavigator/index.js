@@ -32,8 +32,9 @@ const customNavigationOptions = ({ navigation }) => ({
     />)
 })
 const LoginNavigator = createStackNavigator({
-    Login: { screen: ({ navigation }) => <Login navigation={navigation} />, }
+    Login: Login
 }, {
+
     initialRouteName: 'Login',
     navigationOptions: customNavigationOptions
 })
