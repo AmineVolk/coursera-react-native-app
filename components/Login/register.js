@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import themes from "../../res/theme.style"
 import styles from "./style"
-import { View, Button, StyleSheet, Text, Image, Alert } from 'react-native';
+import { View, Button, StyleSheet, Text, TouchableNativeFeedback, Alert } from 'react-native';
 import { Card, Icon, Input, CheckBox } from 'react-native-elements';
 import * as ImagePicker from 'expo-image-picker';
 import * as Permissions from 'expo-permissions';
@@ -9,7 +9,7 @@ import * as SecureStore from 'expo-secure-store';
 import { Avatar } from 'react-native-elements';
 import { LinearGradient } from 'expo-linear-gradient';
 
-export default class componentName extends Component {
+export default class Register extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -62,7 +62,38 @@ export default class componentName extends Component {
             }
         }
     }
-    handleRegister() {
+    getImageFromGalery = async () => {
+        let result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.All,
+            allowsEditing: true,
+            aspect: [4, 3],
+            quality: 1
+        });
+
+        console.log(result);
+
+        if (!result.cancelled) {
+            this.setState({ imageUrl: result.uri });
+        }
+    }
+    onPressAvatar = () => {
+        Alert.alert("Add avatar",
+            `Take a photo or choose one from your galery`,
+            [
+                {
+                    text: "Camera",
+                    onPress: () => this.getImageFromCamera(),
+                    style: "cancel"
+                },
+                {
+                    text: "Galery",
+                    onPress: () => this.getImageFromGalery()
+                }
+            ],
+            { cancelable: true }
+        )
+    }
+    handleRegister = () => {
         if (this.state.remember) {
             SecureStore.setItemAsync('userinfo',
                 JSON.stringify({
@@ -103,7 +134,7 @@ export default class componentName extends Component {
 
                             }}
                             showEditButton
-                            onPress={this.getImageFromCamera}
+                            onPress={this.onPressAvatar}
                         />
                     </View>
                     <Input
@@ -151,18 +182,23 @@ export default class componentName extends Component {
                         inputStyle={{ paddingLeft: 10, color: themes.PRIMARY_TEXT }}
 
                     />
-                    <LinearGradient colors={['#ffac00', '#FFBC10', '#FFCC20']}
-                        start={[0, 1]} end={[1, 0]}
-                        style={{
-                            padding: 10,
-                            alignItems: 'center',
-                            borderRadius: 5
-                        }}
 
+                    <TouchableNativeFeedback onPress={() => this.handleRegister()}
+                        background={TouchableNativeFeedback.SelectableBackground()}
                     >
-                        <Text style={{ color: "white", fontWeight: "bold" }}>Register</Text>
+                        <LinearGradient colors={['#ffac00', '#FFBC10', '#FFCC20']}
+                            start={[0, 1]} end={[1, 0]}
+                            style={{
+                                padding: 10,
+                                alignItems: 'center',
+                                borderRadius: 5
+                            }}
 
-                    </LinearGradient>
+                        >
+                            <Text style={{ color: "white", fontWeight: "bold" }}>Register</Text>
+                        </LinearGradient>
+
+                    </TouchableNativeFeedback>
 
                 </Card>
 

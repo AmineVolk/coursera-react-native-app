@@ -8,6 +8,7 @@ export default {
     DIVIDER_COLOR: "#BDBDBD",
     HEADER_TINT_COLOR: "#fff",
     HEADER_TITLE_COLOR: "#fff",
+    BACKGROUND: "#f5f5f5",
     card: {
         shadowColor: "#000",
         shadowOffset: {
