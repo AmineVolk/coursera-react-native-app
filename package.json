@@ -12,6 +12,7 @@
   "dependencies": {
     "@react-native-community/async-storage": "^1.8.1",
     "@react-native-community/netinfo": "4.6.0",
+    "expo-calendar": "~8.0.0",
     "expo-image-picker": "~8.0.1",
     "expo-linear-gradient": "^8.0.0",
     "expo-mail-composer": "~8.0.0",

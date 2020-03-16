@@ -8,7 +8,7 @@ import * as Animatable from "react-native-animatable"
 import * as Permissions from 'expo-permissions';
 import { Notifications } from 'expo';
 import theme from "../../res/theme.style"
-
+import * as Calendar from 'expo-calendar';
 class Reservation extends Component {
 
     constructor(props) {
@@ -27,7 +27,8 @@ class Reservation extends Component {
     handleReservation() {
         console.log(JSON.stringify(this.state));
         this.toggleModal();
-        this.presentLocalNotif(this.state.date)
+        this.presentLocalNotif(this.state.date);
+        this.addReservationToCalendar(this.state.date)
     }
 
     resetForm() {
@@ -69,7 +70,28 @@ class Reservation extends Component {
         } catch (e) {
             console.error(`Error in presentLocalNotif ${e}`)
         }
+    }
+    obtainCalendarPermission = async () => {
+        const { status } = await Permissions.askAsync(Permissions.CALENDAR);
+        if (status != 'granted') {
+            Alert.alert("No permission to use calandar")
+        }
+    }
+    addReservationToCalendar = async (date) => {
+        try {
+            await this.obtainCalendarPermission();
+            Calendar.createEventAsync(null, {
+                title: "Con Fusion Table Reservation",
+                startDate: Date(Date.parse(date)),
+                endDate: Date(Date.parse(date)),
+                timeZone: "Asia/Hong_Kong",
+                location: "121, Clear Water Bay Road, Clear Water Bay, Kowloon, Hong Kong",
 
+            })
+        } catch (e) {
+            console.error(`Error in addReservationToCalendar ${e}`)
+            Alert.alert(e)
+        }
     }
 
     onPressOnSubmit = () => {
