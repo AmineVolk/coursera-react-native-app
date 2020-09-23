@@ -7,7 +7,7 @@ import { Avatar } from "react-native-elements";
 import styles from "./styles";
 
 export default class CustomDrawer extends Component {
-  constructor(props) {
+  constructor() {
     super();
     this.state = {
       username: "Ristorent Confusion",

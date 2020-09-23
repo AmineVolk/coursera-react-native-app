@@ -8,8 +8,8 @@ import PropTypes from "prop-types";
 import Loading from "../LoadingComponent";
 import * as Animatable from "react-native-animatable";
 class AboutUs extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
   }
   static navigationOptions = {
     title: "About",

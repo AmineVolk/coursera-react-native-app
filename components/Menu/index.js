@@ -1,13 +1,13 @@
 import { Component, default as React } from "react";
-import { FlatList, View } from "react-native";
+import { FlatList, Text, View } from "react-native";
 import { ListItem, Divider } from "react-native-elements";
 import PropTypes from "prop-types";
 import Loading from "../LoadingComponent";
 import * as Animatable from "react-native-animatable";
 
 class Menu extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
   }
   static navigationOptions = {
     title: "Menu",
@@ -41,7 +41,7 @@ class Menu extends Component {
     } else if (this.props.errMess) {
       return (
         <View>
-          <Text>{props.dishes.errMess}</Text>
+          <Text>{this.props.dishes.errMess}</Text>
         </View>
       );
     } else {

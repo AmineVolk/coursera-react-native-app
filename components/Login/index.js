@@ -1,4 +1,3 @@
-import React, { Component } from "react";
 import themes from "../../res/theme.style";
 import LoginComponent from "./login";
 import Register from "./register";

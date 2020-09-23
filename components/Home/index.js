@@ -1,16 +1,10 @@
 import { Component, default as React } from "react";
-import {
-  ScrollView,
-  Text,
-  View,
-  StatusBar,
-  Animated,
-  Easing,
-} from "react-native";
+import { ScrollView, Text, View } from "react-native";
 import { Card } from "react-native-elements";
 import PropTypes from "prop-types";
 import Loading from "../LoadingComponent";
 import theme from "../../res/theme.style";
+
 const RenderItem = (props) => {
   const item = props.item[0];
   if (item != null) {
@@ -29,14 +23,15 @@ const RenderItem = (props) => {
   }
 };
 class Home extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
   }
   static navigationOptions = {
     title: "Home",
   };
 
   render() {
+    const { errMess } = this.props;
     if (this.props.isLoading) {
       return (
         <View
@@ -45,10 +40,10 @@ class Home extends Component {
           <Loading />
         </View>
       );
-    } else if (this.props.errMess) {
+    } else if (errMess) {
       return (
         <View>
-          <Text>{this.props.erreMess}</Text>
+          <Text>{errMess}</Text>
         </View>
       );
     } else {
@@ -76,6 +71,7 @@ Home.propTypes = {
   promotions: PropTypes.array.isRequired,
   leaders: PropTypes.array.isRequired,
   isLoading: PropTypes.bool.isRequired,
+  errMess: PropTypes.object,
 };
 
 export default Home;

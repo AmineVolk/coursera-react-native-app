@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import { View, Button, StyleSheet, Text } from "react-native";
+import { View, Text } from "react-native";
 import { Card, Icon, Input, CheckBox } from "react-native-elements";
 import * as SecureStore from "expo-secure-store";
 import styles from "./style";
 import themes from "../../res/theme.style";
 import { LinearGradient } from "expo-linear-gradient";
 export default class Login extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       username: "",
       password: "",

@@ -10,8 +10,8 @@ import { Notifications } from "expo";
 import theme from "../../res/theme.style";
 import * as Calendar from "expo-calendar";
 class Reservation extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       guests: 1,
       smoking: false,

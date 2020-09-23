@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Platform, StyleSheet, View, ToastAndroid } from "react-native";
+import { View, ToastAndroid } from "react-native";
 import MainNavigator from "../MainNavigator";
 import PropTypes from "prop-types";
 import NetInfo from "@react-native-community/netinfo";

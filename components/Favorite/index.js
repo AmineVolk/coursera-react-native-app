@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { FlatList, View, Alert } from "react-native";
+import { FlatList, View, Alert, Text } from "react-native";
 import { ListItem, Divider } from "react-native-elements";
 import Loading from "../LoadingComponent";
 import Swipeout from "react-native-swipeout";

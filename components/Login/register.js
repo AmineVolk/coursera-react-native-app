@@ -1,15 +1,8 @@
 import React, { Component } from "react";
 import themes from "../../res/theme.style";
 import styles from "./style";
-import {
-  View,
-  Button,
-  StyleSheet,
-  Text,
-  TouchableNativeFeedback,
-  Alert,
-} from "react-native";
-import { Card, Icon, Input, CheckBox } from "react-native-elements";
+import { View, Text, TouchableNativeFeedback, Alert } from "react-native";
+import { Card, Icon, Input } from "react-native-elements";
 import * as ImagePicker from "expo-image-picker";
 import * as Permissions from "expo-permissions";
 import * as SecureStore from "expo-secure-store";
@@ -31,7 +24,7 @@ export default class Register extends Component {
   }
   static navigationOptions = {
     title: "Register",
-    tabBarIcon: ({ tintColor, focused }) => (
+    tabBarIcon: ({ tintColor }) => (
       <Icon
         name="user-plus"
         type="font-awesome"
