@@ -10,15 +10,16 @@ export default class CustomDrawer extends Component {
   constructor() {
     super();
     this.state = {
-      username: "Ristorent Confusion",
-      email: "email@gmail.com",
-      imageUrl: "../images/logo.png",
+      username: "Hamdi Amine",
+      email: "hamdi.amine.dev@gmail.com",
+      imageUrl:
+        "https://s.gravatar.com/avatar/5422c13ccc10ea55e1ca02962c622e7a?size=496&default=retro",
     };
   }
   componentDidMount() {
     SecureStore.getItemAsync("userinfo").then((userdata) => {
-      let userinfo = JSON.parse(userdata);
-      if (userinfo) {
+      if (userdata) {
+        let userinfo = JSON.parse(userdata);
         this.setState({ username: userinfo.username });
         this.setState({ email: userinfo.email });
         this.setState({ imageUrl: userinfo.imageUrl });
@@ -26,6 +27,7 @@ export default class CustomDrawer extends Component {
     });
   }
   render() {
+    console.log(`--- imageUrl ${JSON.stringify(this.state.imageUrl, null, 2)}`);
     return (
       <ScrollView>
         <LinearGradient
@@ -33,7 +35,8 @@ export default class CustomDrawer extends Component {
           start={[0, 1]}
           end={[1, 0]}
           style={{
-            paddingVertical: 25,
+            paddingTop: 70,
+            paddingBottom: 50,
             paddingLeft: 20,
             alignItems: "flex-start",
             flexDirection: "row",
@@ -51,7 +54,7 @@ export default class CustomDrawer extends Component {
           <View style={{ flex: 2, marginTop: 5 }}>
             <Text style={styles.drawerHeaderText}>{this.state.username}</Text>
             <Text style={{ fontSize: 13, color: "white" }}>
-              @{this.state.email}
+              {this.state.email}
             </Text>
           </View>
         </LinearGradient>

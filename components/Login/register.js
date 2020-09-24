@@ -19,7 +19,8 @@ export default class Register extends Component {
       email: "",
       password: "",
       remember: false,
-      imageUrl: "https://i.ibb.co/QjXTrp2/buffet2.jpg",
+      imageUrl:
+        "https://s.gravatar.com/avatar/5422c13ccc10ea55e1ca02962c622e7a?size=496&default=retro",
     };
   }
   static navigationOptions = {
