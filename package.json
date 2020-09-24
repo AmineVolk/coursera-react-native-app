@@ -61,5 +61,5 @@
     "eslint-plugin-react": "^7.11.0",
     "expo": "^36.0.2",
     "prettier": "^2.1.1"
-  }
+  },"keywords": ["coursera","react-native","redux"]
 }
